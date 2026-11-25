@@ -25,6 +25,14 @@ app.get("/voitures", async (req, res) => {
   const { rows } = await db.query("SELECT * FROM voitures");
   res.json(rows);
 });
+
+app.get("/voitures/:id", async (req, res) => {
+  req.params.id;
+  const { rows } = await db.query("SELECT id, marqe FROM voitures WHERE id=$1");
+  res.json(rows[0]);
+  req.params.id;
+});
+
 app.listen(PORT, () => {
   console.log(`API available on http://localhost:${PORT} !`);
 });
