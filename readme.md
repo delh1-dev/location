@@ -38,5 +38,22 @@ le suget
   - créer un type Ts custum
   - fetch
   - .map
+
+- afficher un seul tuple de ma base
+- [bdd] une requete SQL
+- [backend] une nouvelle route GET/voitures/:id
+- [frontend]
+  - une nouvelle page
+  - un composant
+  - react-router
+  - main.tsx browserRouter
+  - App.tsx
+  - un bouton "supprimer"
+  - ajouter une confirmation
+  - ajouter des toasts
+
+  - supprimer un article
+
+-
 - créer un PBacklog
-- créer un SBacklog-
+- créer un SBacklog

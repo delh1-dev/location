@@ -1,21 +1,16 @@
 import { useEffect, useState } from "react";
-
-type voitures = {
-  id: number;
-  marque: string;
-  modele: string;
-  prix_par_jour: number;
-  disponible: boolean;
-};
+import { Link } from "react-router";
+import type { Car } from "../types/Car";
+import { toast } from "react-toastify";
 
 export default function HomePage() {
-  const [voitures, setvoitures] = useState<voitures[]>([]);
+  const [voitures, setVoitures] = useState<Car[]>([]);
 
   useEffect(() => {
     async function fetchData() {
       const rawData = await fetch("http://localhost:3000/voitures");
       const cleanData = await rawData.json();
-      setvoitures(cleanData);
+      setVoitures(cleanData);
     }
     fetchData();
   }, []);
@@ -25,10 +20,11 @@ export default function HomePage() {
       <h1>CarRent!</h1>
       {voitures.map((voiture) => {
         return (
-          <p>
+          <p key={voiture.id}>
             {voiture.id} {voiture.marque} {voiture.modele} -{" "}
             {Number(voiture.prix_par_jour)} € par jour
             {voiture.disponible ? " (disponible)" : " (indisponible)"}
+            <Link to={`/${voiture.id}`}>{voiture.marque}</Link>
           </p>
         );
       })}

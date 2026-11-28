@@ -27,10 +27,17 @@ app.get("/voitures", async (req, res) => {
 });
 
 app.get("/voitures/:id", async (req, res) => {
-  req.params.id;
-  const { rows } = await db.query("SELECT id, marqe FROM voitures WHERE id=$1");
+  const { rows } = await db.query("SELECT * FROM voitures WHERE id=$1", [
+    Number(req.params.id),
+  ]);
   res.json(rows[0]);
-  req.params.id;
+});
+
+app.delete("/voitures/:id", async (req, res) => {
+  const { rows } = await db.query("DELETE FROM voitures WHERE id=$1", [
+    Number(req.params.id),
+  ]);
+  res.json(rows[0]);
 });
 
 app.listen(PORT, () => {
